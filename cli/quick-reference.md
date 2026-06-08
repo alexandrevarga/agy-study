@@ -24,7 +24,7 @@
 | `/skills` | — | Browse available skills |
 | `/permissions` | — | Add/edit/remove permission rules |
 | `/diff` | — | Git diff (supports `commit1..commit2`) |
-| `/fast` | `/yolo` | Fast mode (no planning) |
+| `/fast` | — | Fast mode (no planning - `/yolo` deprecated) |
 | `/planning` | — | Planning mode (review plans) |
 | `/usage` | `/quota` | Real-time quota display |
 | `/credits` | — | G1 credits panel |
@@ -44,7 +44,7 @@
 | `ctrl+j` | Submit message (alternative) |
 | `ctrl+n` | New conversation |
 | `ctrl+r` | Toggle Artifact Review panel |
-| `ctrl+o` | Open file picker |
+| `ctrl+o` | Expand/collapse tool output |
 | `ctrl+k` | Focus input |
 | `ctrl+c` | Cancel agent / interrupt stream |
 | `ctrl+d` `ctrl+d` | Quit |

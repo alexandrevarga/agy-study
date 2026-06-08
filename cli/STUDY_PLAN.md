@@ -1,25 +1,25 @@
 # CLI Study Plan
 
-> Progresso: 0/14 módulos concluídos
+> Progresso: 3/14 módulos concluídos
 
 Invoke `/study-cli` to start or resume your session. The agent reads from `cli/mastering-guide.md`.
 
 ---
 
 ## Módulo 1 — Interface & Navegação
-- [ ] Layout do TUI (header, viewport, statusbar, input)
-- [ ] Keybindings canônicos (tabela completa com correções do changelog)
-- [ ] Navegação entre conversas (alt+j teleport, ctrl+n, /resume)
+- [x] Layout do TUI (header, viewport, statusbar, input)
+- [x] Keybindings canônicos (tabela completa com correções do changelog)
+- [x] Navegação entre conversas (alt+j teleport, ctrl+n, /resume)
 
 ## Módulo 2 — Slash Commands
-- [ ] Mapa completo de comandos e aliases
-- [ ] Fuzzy matching (v1.0.6) e autocomplete de slash commands
-- [ ] Skill-derived slash commands (skills geram /skill-name automaticamente)
+- [x] Mapa completo de comandos e aliases
+- [x] Fuzzy matching (v1.0.6) e autocomplete de slash commands
+- [x] Skill-derived slash commands (skills geram /skill-name automaticamente)
 
 ## Módulo 3 — Configuração (settings.json)
-- [ ] Todos os 13 keys canônicos + UseG1Credits
-- [ ] autoAcceptChanges, toolCallMode, toolDiscoveryMode
-- [ ] Localização: ~/.gemini/antigravity-cli/settings.json
+- [x] Todos os 13 keys canônicos + UseG1Credits
+- [x] autoAcceptChanges, toolCallMode, toolDiscoveryMode
+- [x] Localização: ~/.gemini/antigravity-cli/settings.json
 
 ## Módulo 4 — Sistema de Permissões
 - [ ] Engine deny/ask/allow — precedência e funcionamento

@@ -85,7 +85,7 @@ agy --version
 | `ctrl+j` | Submit message (alternative) |
 | `ctrl+n` | New conversation |
 | `ctrl+r` | Toggle Artifact Review panel |
-| `ctrl+o` | Open file picker |
+| `ctrl+o` | Expand/collapse tool output in viewport |
 | `ctrl+k` | Focus input box |
 | `ctrl+c` | Cancel / interrupt agent stream |
 | `ctrl+d` `ctrl+d` | Quit |
@@ -124,7 +124,7 @@ Full list (including aliases and commands added post-launch):
 | `/skills` | — | Browse available skills |
 | `/permissions` | — | Add/edit/remove permission rules (full CRUD since v1.0.5) |
 | `/diff` | — | Show git diff (supports `commit1..commit2`, short hashes) |
-| `/fast` | `/yolo` | Switch to Fast mode (no planning, immediate execution) |
+| `/fast` | — | Switch to Fast mode (no planning, immediate execution - `/yolo` alias deprecated/removed) |
 | `/planning` | — | Switch to Planning mode (implementation plans + review) |
 | `/usage` | — | Show quota usage (forces real-time reload) |
 | `/quota` | — | Alias for `/usage` |
@@ -757,6 +757,10 @@ When enabled, the CLI automatically uses G1 credits when standard quota is exhau
 | Long conversation slow | Performance regression | Resolved in v1.15.8+; update CLI |
 | `$EDITOR` with `=` in args fails | Parsing bug pre-v1.0.3 | Resolved in v1.0.3+ |
 | Token limit hit early | Token accounting bug | Resolved in v1.20.5+ |
+| `alt+j` (teleport) does not work | Intercepted by GNOME tiling or missing Ghostty Option-as-Meta | Use `/resume` instead |
+| `ctrl+n` does not start new conversation | Captured by TUI input box readline history navigation | Use `/new` or `/clear` instead |
+| `ctrl+o` blinks screen / does nothing | Input box has focus or no tool output is selected | Select/focus a tool output in the viewport first |
+| Stuck in Tmux copy mode | `Esc` cancels active stream/input | Press `q` to exit Tmux copy/edit mode cleanly |
 
 ---
 
