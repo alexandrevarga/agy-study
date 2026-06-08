@@ -1,3 +1,8 @@
+---
+name: study-cli
+description: Start or resume a structured study session for the Antigravity CLI.
+---
+
 # Study CLI — Antigravity CLI Study Session
 
 Start or resume a structured study session for the Antigravity CLI.

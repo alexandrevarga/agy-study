@@ -1,3 +1,8 @@
+---
+name: study-ide
+description: Start or resume a structured study session for the Antigravity IDE.
+---
+
 # Study IDE — Antigravity IDE Study Session
 
 Start or resume a structured study session for the Antigravity IDE.

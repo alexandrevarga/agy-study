@@ -1,3 +1,8 @@
+---
+name: study-2.0
+description: Start or resume a structured study session for Antigravity 2.0.
+---
+
 # Study 2.0 — Antigravity 2.0 Study Session
 
 Start or resume a structured study session for Antigravity 2.0.

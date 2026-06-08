@@ -1,3 +1,8 @@
+---
+name: study-sdk
+description: Start or resume a structured study session for the Antigravity SDK.
+---
+
 # Study SDK — Antigravity SDK Study Session
 
 Start or resume a structured study session for the Antigravity SDK.
