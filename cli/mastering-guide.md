@@ -1,6 +1,6 @@
 # Antigravity CLI — Mastering Guide
 
-> **SSOT (Single Source of Truth)** — Compiled from 74 pages of official documentation + full changelog (v1.0.0–v1.0.6). All discrepancies resolved and canonical paths verified against the live filesystem.
+> **SSOT (Single Source of Truth)** — Compiled from 74 pages of official documentation + full changelog (v1.0.0–v1.0.7). All discrepancies resolved and canonical paths verified against the live filesystem.
 
 ---
 
@@ -158,6 +158,8 @@ Full list (including aliases and commands added post-launch):
 | `preferredEditor` | string | Override `$EDITOR` for file editing |
 | `sandbox` | object | Sandboxing configuration (see §13) |
 | `UseG1Credits` | boolean | Auto-use G1 credits when standard quota exhausted (added v1.0.3) |
+
+> **v1.0.7 — Unknown fields preserved:** The CLI now preserves any unknown keys in `settings.json` during read, write, and merge operations. This prevents settings from being silently wiped when switching between CLI versions or builds — safe to keep custom/experimental keys in the file.
 
 ### Example settings.json
 ```json
@@ -318,6 +320,31 @@ OAuth callback: `https://antigravity.google/oauth-callback`
 ### MCP startup behavior (v1.0.4+)
 MCP servers initialize in **parallel** — slow/hanging custom servers no longer block fast-starting servers (like local plugins).
 
+### MCP Server Timeout (v1.0.7+)
+
+A per-server launch timeout is now configurable:
+
+```json
+{
+  "mcpServers": {
+    "my-slow-server": {
+      "command": "/path/to/server",
+      "timeout": 60
+    },
+    "my-reliable-server": {
+      "command": "/path/to/other",
+      "timeout": -1
+    }
+  }
+}
+```
+
+| `timeout` value | Behavior |
+|---|---|
+| Positive number | Wait up to N seconds before aborting server launch |
+| `-1` | Disable timeout entirely (wait forever) |
+| Omitted | Platform default timeout applies |
+
 ### Managing via TUI
 - `/mcp` command: browse, enable/disable, configure servers
 - After v1.0.3: TUI disable correctly writes to `~/.gemini/config/mcp_config.json`
@@ -394,9 +421,16 @@ plugins/<plugin-name>/
 
 **Install via CLI:**
 ```bash
+# Basic install
 agy plugin install <name>
+
+# GitHub subpath with optional branch (v1.0.7+)
+agy plugin install owner/repo/path/to/plugin
+agy plugin install owner/repo/path/to/plugin@branch
 ```
 As of v1.0.2, installs to `~/.gemini/config/` (shared), not the private CLI data dir.
+
+> **v1.0.7 — `${extensionPath}` fix:** Plugin variables like `${extensionPath}` now correctly resolve to the final installation directory during install and configuration. Previously, this variable resolved to the wrong path, breaking plugins that reference their own assets.
 
 **Build with Google plugins:** Available at Customizations > Plugins in the UI.
 
@@ -617,6 +651,7 @@ define_subagent(
 - Idle agents can be re-awakened by any agent (not just parent) via `send_message`
 - Inter-agent communication: `send_message` tool with recipient conversation ID
 - Max nesting depth: **10 levels** (hard limit)
+- **Max tool calls per turn: 512** (increased in v1.0.7 — allows significantly more complex multi-step tasks per agent turn on Gemini models)
 - Permissions: subagents inherit parent's safety configuration
 - Approval bubbling: subagent permission requests bubble up to parent's UI
 
@@ -761,6 +796,12 @@ When enabled, the CLI automatically uses G1 credits when standard quota is exhau
 | `ctrl+n` does not start new conversation | Captured by TUI input box readline history navigation | Use `/new` or `/clear` instead |
 | `ctrl+o` blinks screen / does nothing | Input box has focus or no tool output is selected | Select/focus a tool output in the viewport first |
 | Stuck in Tmux copy mode | `Esc` cancels active stream/input | Press `q` to exit Tmux copy/edit mode cleanly |
+| Paste image inside Tmux | Tmux intercepts Wayland clipboard; direct paste from clipboard not supported | **v1.0.7 partial fix:** copy file via Nautilus first, then paste works inside Tmux. Direct clipboard-to-Tmux still requires `img-to-path.sh` workaround — **keep script** |
+| Artifact last line hidden in detail view | Gutter/scroll off-by-one bug pre-v1.0.7 | **Resolved in v1.0.7** — navigate with `↓` to end; `Shift+G` workaround no longer needed |
+| Mermaid diagram invisible in artifact viewer (Tmux) | Tmux does not render the diagram graphic | Known limitation — Mermaid diagrams are not visible inside Tmux sessions; use Ghostty directly |
+| Mermaid diagram not expandable in artifact viewer (Ghostty) | Diagram renders but is collapsed and cannot be zoomed or expanded | Known limitation — Mermaid diagrams are read-only previews; zoom/resize does not reflow the graphic |
+| CLI spinner stuck after sending message | Stale status update bug pre-v1.0.7 | **Resolved in v1.0.7** — verified clean with rapid sequential messages |
+| Header shows wrong workspace dir | Multi-workspace display bug pre-v1.0.7 | Resolved in v1.0.7+ |
 
 ---
 
@@ -777,6 +818,7 @@ When enabled, the CLI automatically uses G1 credits when standard quota is exhau
 | **1.0.4** | SQLite conversations, LaTeX rendering, `projects.json` centralized, rules.json fix, MCP parallel init |
 | **1.0.5** | `--model` flag, `/permissions` CRUD, `url` in mcp_config, shared permissions integration |
 | **1.0.6** | Fuzzy slash commands, `stack_with_default`, `--sandbox` flag, shell path autocomplete in `/open`/`/add-dir` |
+| **1.0.7** | MCP server timeout config, 512 max tool calls, GitHub subpath plugin install, Wayland clipboard (wl-paste), artifact viewer gutter fix, `settings.json` unknown fields preserved |
 
 ### Broader platform history (IDE/2.0 codebase, relevant to CLI)
 
@@ -794,4 +836,4 @@ When enabled, the CLI automatically uses G1 credits when standard quota is exhau
 
 ---
 
-*Last updated: June 2026 — based on CLI v1.0.6 documentation and changelog*
+*Last updated: June 2026 — based on CLI v1.0.7 documentation and changelog*

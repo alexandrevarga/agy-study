@@ -30,4 +30,4 @@ Start or resume a structured study session for the Antigravity CLI.
 - Source of truth: `cli/mastering-guide.md`
 - Progress tracker: `cli/STUDY_PLAN.md`
 - Quick lookup: `cli/quick-reference.md`
-- Current CLI version: v1.0.6
+- Current CLI version: v1.0.7

@@ -1,6 +1,6 @@
 # CLI Study Plan
 
-> Progresso: 3/14 módulos concluídos
+> Progresso: 4/14 módulos concluídos
 
 Invoke `/study-cli` to start or resume your session. The agent reads from `cli/mastering-guide.md`.
 
@@ -22,10 +22,10 @@ Invoke `/study-cli` to start or resume your session. The agent reads from `cli/m
 - [x] Localização: ~/.gemini/antigravity-cli/settings.json
 
 ## Módulo 4 — Sistema de Permissões
-- [ ] Engine deny/ask/allow — precedência e funcionamento
-- [ ] Tabela de actions (read_file, write_file, command, mcp, etc.)
-- [ ] /permissions CRUD via TUI
-- [ ] proceed-in-sandbox mode
+- [x] Engine deny/ask/allow — precedência e funcionamento
+- [x] Tabela de actions (read_file, write_file, command, mcp, etc.)
+- [x] /permissions CRUD via TUI
+- [x] proceed-in-sandbox mode
 
 ## Módulo 5 — MCP Configuration
 - [ ] Path canônico migrado: ~/.gemini/config/mcp_config.json

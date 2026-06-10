@@ -133,6 +133,7 @@
 | `agy models` | List available models (**v1.0.5**) |
 | `agy changelog` | Show changelog (**v1.0.4**) |
 | `agy plugin install <name>` | Install plugin |
+| `agy plugin install owner/repo/path@branch` | Install plugin from GitHub subpath (**v1.0.7**) |
 
 ---
 
@@ -196,4 +197,4 @@
 
 ---
 
-*CLI v1.0.6 — June 2026*
+*CLI v1.0.7 — June 2026*
